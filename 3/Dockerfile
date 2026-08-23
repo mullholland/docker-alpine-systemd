@@ -5,6 +5,13 @@ LABEL build_date="2026-08-23"
 
 ENV container=docker
 
+# Install requirements.
+RUN apk add --update --no-cache \
+      python3 \
+      py3-pip \
+      sudo \
+      ca-certificates
+
 # Enable init.
 RUN apk add --update --no-cache openrc && \
     sed -i 's/^\(tty\d\:\:\)/#\1/g' /etc/inittab && \
